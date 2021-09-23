@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { createSwitchNavigator, createAppContainer } from 'react-navigation'
+import Login from './telas/Login'
+import Signup from './telas/Signup'
+import Perfil from './telas/Perfil'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+
+
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <Drawer.Navigator initialRouteName="Home">
+                <Drawer.Screen name="Login" component={Login} />
+                <Drawer.Screen name="Cadastro" component={Signup} />
+                <Drawer.Screen name="Tela Principal" component={Perfil} />
+            </Drawer.Navigator>
+        </NavigationContainer>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
